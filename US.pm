@@ -27,7 +27,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 
 # Preloaded methods go here.
@@ -190,6 +190,15 @@ http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm
 
 lynx -dump http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm > kruft.txt
 kruft2codes.pl
+
+=head1 COPYRIGHT INFO
+
+Copyright: Copyright (c) 2002-2007 Terrence Brannon.  
+All rights reserved.  This program is free software; you can redistribute it and/or modify it 
+under the same terms as Perl itself.
+
+License: GPL, Artistic, available in the Debian Linux Distribution at
+/usr/share/common-licenses/{GPL,Artistic}
 
 
 =head1 AUTHOR
