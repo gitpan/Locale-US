@@ -1,21 +1,13 @@
-               Locale-US Distribution
-                       v1.1
-
-This distribution contains a module which can be used to process
-USPS two letter codes for states in the United States and 
-surrounding territories.
-
-    Locale::US
-        Two letter codes for state identification.
-        For example, 'AL' is the code for 'Alabama'.
-
-To install this module, copy to US.pm somewhere on your PERL5LIB path or 
-use 'use lib'  
-
-The module is documented using pod. 
-
-Please let me know if you experience any problems with these modules,
-or have any ideas for additions.
 
 
-Terrence Brannon <tbone@cpan.org>
+This archive contains the distribution Locale-US,
+version 1.112140:
+
+  two letter codes for state identification in the United States and vice versa.
+
+This software is copyright (c) 2011 by Terrence Brannon.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+

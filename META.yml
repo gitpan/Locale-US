@@ -1,10 +1,20 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Locale-US
-version:      1.2
-version_from: US.pm
-installdirs:  site
+---
+abstract: 'two letter codes for state identification in the United States and vice versa.'
+author:
+  - 'Terrence Brannon'
+build_requires:
+  Test: 0
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.200012, CPAN::Meta::Converter version 2.110930'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Locale-US
 requires:
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+  Data::Dumper: 0
+  Data::Section::Simple: 0
+version: 1.112140

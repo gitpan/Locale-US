@@ -1,10 +1,12 @@
+Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README
+codes.dat
+dist.ini
 kruft.txt
 kruft2codes.pl
-codes.dat
-Changes
-Makefile.PL
-MANIFEST
-README
-US.pm
+lib/Locale/US.pm
 t/1.t
-META.yml                                 Module meta-data (added by MakeMaker)

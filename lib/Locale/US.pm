@@ -1,34 +1,15 @@
 package Locale::US;
+BEGIN {
+  $Locale::US::VERSION = '1.112140';
+}
 
-use 5.006001;
+
 use strict;
 use warnings;
 
 use Data::Dumper;
 
-require Exporter;
-
-our @ISA = qw(Exporter);
-
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use Locale::US ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-	
-);
-
-our $VERSION = '1.2';
-
+use Data::Section::Simple;
 
 # Preloaded methods go here.
 
@@ -37,16 +18,22 @@ sub new {
     my $class = shift;
     my $self = {} ;
 
-    while ( <DATA>) {
-	chomp;
-#	warn $_;
-	last if /__END__/;
+    my $data = Data::Section::Simple::get_data_section('states');
+    #die "data: $data";
+
+    my @line = split "\n", $data;
+    #die "LINE: @line";
+
+    for ( @line ) {
+
 	my ($code, $state) = split ':';
+	warn "	my ($code, $state) = split ':';";
+
 	$self->{code2state}{$code}  = $state;
 	$self->{state2code}{$state} = $code;
     }
 
-#    warn Dumper $self;
+    #die Dumper $self;
     bless $self, $class;
 }
 
@@ -54,7 +41,7 @@ sub all_state_codes {
 
     my $self = shift;
 
-    keys % { $self->{code2state} } ;
+    sort keys % { $self->{code2state} } ;
 
 }
 
@@ -62,13 +49,14 @@ sub all_state_names {
 
     my $self = shift;
 
-    keys % { $self->{state2code} } ;
+    sort keys % { $self->{state2code} } ;
 
 }
 
 1;
 
 __DATA__
+@@ states
 AL:ALABAMA
 AK:ALASKA
 AS:AMERICAN SAMOA
@@ -139,7 +127,7 @@ Locale::US - two letter codes for state identification in the United States and 
 
   use Locale::US;
  
-  my $u = new Locale::US;
+  my $u = Locale::US->new;
 
   my $state = $u->{code2state}{$code};
   my $code  = $u->{state2code}{$state};
@@ -150,7 +138,7 @@ Locale::US - two letter codes for state identification in the United States and 
 
 =head1 ABSTRACT
 
-Map from US two-letter codes to statees and vice versa.
+Map from US two-letter codes to states and vice versa.
 
 =head1 DESCRIPTION
 
@@ -158,14 +146,21 @@ Map from US two-letter codes to statees and vice versa.
 
 =head3 $self->{code2state}
 
+This is a hashref which has two-letter state names as the key and the long name as the value.
+
 =head3 $self->{state2code}
+
+This is a hashref which has the long nameas the key and the two-letter state name as the value.
 
 =head2 DUMPING
 
 =head3 $self->all_state_names
 
+Returns an array (not arrayref) of all state names in alphabetical form
+
 =head3 $self->all_state_codes
 
+Returns an array (not arrayref) of all state codes in alphabetical form.
 
 =head1 KNOWN BUGS AND LIMITATIONS
 
@@ -179,21 +174,25 @@ Map from US two-letter codes to statees and vice versa.
 
 =head1 SEE ALSO
 
+=head2 Locale::Country
 
 L<Locale::Country>
 
-http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm
+=head2 Abbreviations
+
+L<http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm>
 
     Online file with the USPS two-letter codes for the United States and its possessions.
 
-=head1 AUXILLIARY CODE:
+=head2 AUXILIARY CODE:
 
-lynx -dump http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm > kruft.txt
-kruft2codes.pl
+    lynx -dump http://www.usps.gov/ncsc/lookups/usps_abbreviations.htm > kruft.txt
+    kruft2codes.pl
 
 =head1 COPYRIGHT INFO
 
-Copyright: Copyright (c) 2002-2007 Terrence Brannon.  
+Copyright (c) 2002 - C<< $present >> Terrence Brannon.
+
 All rights reserved.  This program is free software; you can redistribute it and/or modify it 
 under the same terms as Perl itself.
 
@@ -205,8 +204,9 @@ License: GPL, Artistic, available in the Debian Linux Distribution at
 
 T. M. Brannon, <tbone@cpan.org>
 
-=head1 COPYRIGHT AND LICENSE
+=head2 PATCHES
 
-Copyright 2003 by T. M. Brannon
+Thanks to stevet AT ibrinc for a patch about second call to new failing.
+
 
 =cut
