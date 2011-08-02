@@ -17,4 +17,4 @@ name: Locale-US
 requires:
   Data::Dumper: 0
   Data::Section::Simple: 0
-version: 1.112140
+version: 2.112140

@@ -1,6 +1,6 @@
 package Locale::US;
 BEGIN {
-  $Locale::US::VERSION = '1.112140';
+  $Locale::US::VERSION = '2.112140';
 }
 
 
