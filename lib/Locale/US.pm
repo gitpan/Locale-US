@@ -1,6 +1,6 @@
 package Locale::US;
 BEGIN {
-  $Locale::US::VERSION = '2.112140';
+  $Locale::US::VERSION = '2.112150';
 }
 
 
@@ -27,7 +27,7 @@ sub new {
     for ( @line ) {
 
 	my ($code, $state) = split ':';
-	warn "	my ($code, $state) = split ':';";
+	#warn "	my ($code, $state) = split ':';";
 
 	$self->{code2state}{$code}  = $state;
 	$self->{state2code}{$state} = $code;

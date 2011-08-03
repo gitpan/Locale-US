@@ -18,7 +18,7 @@ ok(1); # If we made it this far, we're ok.
 my $u = new Locale::US;
 
 use Data::Dumper;
-warn Dumper ( [ $u->all_state_codes ], [ $u->all_state_names ] );
+#warn Dumper ( [ $u->all_state_codes ], [ $u->all_state_names ] );
 
 
 my $code  = 'AL';
